@@ -10,15 +10,11 @@ import urllib2
 from forms import *
 
 # necessary API keys and URLs
-API_KEY = 'AIzaSyBAlzni-M1GtWax2D5aL7LYK_6TZv-uCZs' # 2
-API_KEY = 'AIzaSyBXd-7MxdnKoX4vk-rt1fuJx7qeeZToL4I' # 1
-API_KEY = 'AIzaSyBNvWSBV_MSrFX0EEaT-F4n3dYnuuj6hO8' # 3
-API_KEY = 'AIzaSyCz-Td1rOaCzQZ-HPWa6y0OkyqnPSI5bSg' # 4
-API_KEY = 'AIzaSyAlL-LmbK97TR8OzRaZ1OralNiBPCajYlc' # 5
+API_KEY = ''
 
 API_PREFIX = 'https://www.googleapis.com/customsearch/v1?q='
 API_SUFFIX = '&cx=017349157168230389014:_ondpc9tdeq&num=10&fields=items(link,snippet,title)&key=%s' % API_KEY
-ALCHEMY_PREFIX = 'http://gateway-a.watsonplatform.net/calls/url/URLGetRankedNamedEntities?apikey=8b214943933b72caaa6bb9c246849f9427f8b27a&outputMode=json&disambiguate=0&maxRetrieve=10&coreference=0&url='
+ALCHEMY_PREFIX = 'http://gateway-a.watsonplatform.net/calls/url/URLGetRankedNamedEntities?apikey={{ api_key }}&outputMode=json&disambiguate=0&maxRetrieve=10&coreference=0&url='
 
 def make_keyword_search(result_link):
     '''Makes API call to Alchemy and extracts the entities we want.'''
