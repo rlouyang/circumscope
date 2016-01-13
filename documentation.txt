@@ -1,0 +1,37 @@
+CircumScope Design
+CS50
+
+For our project, we created a single Django app (named cs for "CircumScope") in 
+    a single Django project (also named cs), primarily because we wanted to take 
+    advantage of Python's unique capabilities as well as because Python is super 
+    easy to use. We also felt that the learning curve for Django was smaller.
+
+To get this website running, you will need to have Python installed (we used 2.7
+    because I can't stand 3.x) and in your path as well as several modules. 
+    If you don't have these, install them:
+    (sudo) easy_install django
+    (sudo) easy_install django-localflavor
+To run, just cd into the folder with manage.py, and type "python manage.py 
+    runserver" into the command line. Add "$IP:$PORT" if you're in something 
+    like the CS50 IDE. 
+    
+Once the site is running, using it is very straightforward. The homepage is
+    simple and contains some informational material. There is a button that 
+    links to the search page, and the header bar contains links to the about
+    page and the search page, too. 
+    
+The search page is where the site's main function takes place. The page contains
+    11 different fields in which you can enter biographical information, such as
+    first and last names, high school, university, hometown, and employer. You
+    do not need to fill in every field, but filling in more fields provides a
+    more comprehensive list of results. In addition, there is a button for you
+    to add any other keywords you wish to include.
+    
+Once you click search, a loading icon will appear until the results are 
+    displayed. This may take some time, depending on the number of fields you
+    fill. The results page will include search results for a combination of
+    the name and each field. At the end of the results page, you will get a 
+    clickable list of keywords that the site extracts from the results above. 
+    Clicking one of these results will open a google search with the results of
+    that query. 
+    

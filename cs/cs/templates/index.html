@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+<!-- Header -->
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1>CircumScope</h1>
+            <p>Ever wonder what information about you is publicly available on the Internet? CircumScope scours the web to find as much of this information as possible.</p>
+            <a href="/search/" class="btn btn-primary btn-lg">Search</a>
+        </div>
+    </div>
+</header>
+
+<!-- Intro Section -->
+<section class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+            	<span class="glyphicon glyphicon-search" style="font-size: 60px"></span>
+                <h2 class="section-heading">Your online presence, all in one place. </h2>
+                <p class="text-light">As the amount of information we store online grows, it can be difficult to find everything about you on the Internet. More than 80% of employers look up potential employees online during the hiring process. CircumScope is your personal search engine, making it easy to take control of your online presence.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

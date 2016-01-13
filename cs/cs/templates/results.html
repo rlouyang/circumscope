@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %} | Results {% endblock %}
+
+{% block header %}
+<li>
+    <a href="/">Home</a>
+</li>
+<li>
+    <a href="/aboutus/">About Us</a>
+</li>
+<li class="active">
+    <a href="/search/">Search</a>
+</li>
+{% endblock header %}
+
+{% block content %}
+<h1 class="search" id="search">Results.</h1>
+<div class="results" id="results">
+{% for result in result_list %}
+
+{% include "result.html" %}
+
+{% endfor %}
+
+<h8 class="result additional">These are the keywords you provided: </h8>
+
+{% for entity in flist %}
+
+{% include "entity.html" %}
+
+{% endfor %}
+
+<h8 class="result additional">Click any of these links to search your name with each keyword: </h8>
+
+{% for entity in associated_words %}
+
+{% include "entity.html" %}
+
+{% endfor %}
+
+</div>
+{% endblock %}

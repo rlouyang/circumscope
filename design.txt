@@ -1,0 +1,27 @@
+CircumScope Design
+CS50
+
+For our project, we created a single Django app (named cs for "CircumScope") in a single Django project (also named cs), primarily because we wanted to take advantage of Python's unique capabilities as well as because Python is super easy to use. We also felt that the learning curve for Django was smaller.
+
+To get this website running, you will need to have Python installed (we used 2.7 because I can't stand 3.x) and in your path as well as several modules. If you don't have these, install them:
+(sudo) easy_install django
+(sudo) easy_install django-localflavor
+To run, just cd into the folder with manage.py, and type "python manage.py runserver" into the command line. Add "$IP:$PORT" if you're in something like the CS50 IDE. 
+
+The python files of note are forms.py, urls.py, and views.py. 
+
+1. forms.py contains a single form, which is the form we use to make our searches. It asks for all the information we need to make the search, but only the first and last names are required. 
+
+2. urls.py contains the URLs we will accept for our page, as well as a standard admin page and a 404 page. The static url sends you to the static files, and the favicon url redirects you to the location of our favicon.
+
+3. views.py is where all the logic takes place. Our "populate" functions populate the respective pages (home, aboutus, search), and the static and 404 functions render the correct pages as well. The interesting logic takes place in the other functions. 
+(a) if request.method = 'POST' in populate_search: This portion of the function receives the data POSTed from the search form and processes it. First, some uninteresting housekeeping (until line 138) happens. Then, the for loop searches the full name (in quotation marks) combined with each keyword entered using the Google Custom Search API (which is annoyingly restrictive) and combines these results. Then, we search just the full name in quotation marks. Then, we obtain keywords from each of the pages listed in the results and search the username, if given, without the name (because usernames, though used on many sites, are usually much more anonymous than the other keywords). Finally, all this information is rendered. 
+(b) make_keyword_search: This function makes a call to Alchemy's named entities API, which we use to extract important keywords (presumably about the person we're search for) from a webpage, and only keeps the keywords marked "JobTitle," "Organization," and "TwitterHandle," because those are the keywords most likely to yield interesting information about a person. We do this by creating a new list of keywords, pruned_entities, and only copying in a max of five keywords per page from each of the three categories. These keywords are then returned as a list.
+(c) get_keywords: This function required multithreading for the sake of speed. For each link that we obtained from Google, we used the function outlined in part (b) in order to obtain the desired keywords. These are aggregated, duplicates are removed with set, and the whole list is returned. 
+(d) make_api_request: This is a standard function that takes a URL and returns the resulting JSON object as a dictionary. 
+(e) search_with_name: This function makes two Google Custom API searches, one for each of the first two pages of results, and returns them as a list.
+(f) generic_search: This function makes two Google Custom API searches, one for each of the first two pages of results, and combines them in a list. It adds links that aren't duplicates (checked with the dictionary called links) to a master list of results as well as a master list of links and returns them. 
+
+The templates folder contains our HTML. These pages don't contain much interesting logic but are very well-designed. A short piece of JavaScript in search.html  adds up to ten keywords to the search page, in case you want to add miscellaneous words that you think may turn up more complete results.
+
+The static folder contains all CSS, font, image, and JavaScript files. We are only responsible for custom.css, custom.js, favicon.ico, and magnify.svg (our loading symbol). custom.css obviously contains no logic, but custom.js contains functions that change colors when you click form fields, adjust the color and opacity of the navbar if you scroll down, and show the loading bar when you've submitted a search. 

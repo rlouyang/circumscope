@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %} | About Us {% endblock title %}
+
+{% block header %}
+<li>
+    <a href="/">Home</a>
+</li>
+<li class="active">
+    <a href="/aboutus/">About Us</a>
+</li>
+<li>
+    <a href="/search/">Search</a>
+</li>
+{% endblock header %}
+
+{% block content %}
+<!-- Header -->
+<header>
+    <div class="header-content2">
+        <div class="header-content2-inner">
+            <h7>What can others find out about you?</h7>
+            <p>As the amount of information we store online grows, it can be difficult to find everything about you on the Internet. More than 80% of employers look up potential employees online during the hiring process. CircumScope is your personal search engine, making it easy to take control of your online presence.</p>
+        </div>
+        <div class="header-content2-inner">
+            <h7>How do you use CircumScope?</h7>
+            <p>CircumScope uses biographical information that you enter <a href='/search/'>here</a> to run a series of searches. You don't have to fill in every field, but the more information you provide, the more accurate the results will be. The results page will display links to the pages that match this information, but in addition, CircumScope will extract keywords from the results that may be of interest. Clicking a keyword will direct you to a Google results page for that keyword search.</p>
+        </div>
+        <div class="header-content2-inner">
+            <h7>About us</h7>
+            <p>CircumScope was created by two Harvard students, Richard Ouyang and Salman Haque, as their final project in <a href="https://cs50.harvard.edu">CS50: Introduction to Computer Science I</a>.</p>
+        </div>
+    </div>
+</header>
+{% endblock %}
